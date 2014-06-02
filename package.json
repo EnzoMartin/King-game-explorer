@@ -1,0 +1,62 @@
+{
+    "name": "simple-app-01",
+    "title": "Games",
+    "headline": "powered by Backbone",
+    "description": "Simple Backbone application",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:EnzoMartin78/Simple-App-01.git"
+    },
+    "author": "Enzo Martin <enzo.r.martin@gmail.com>",
+    "contributors": [
+        {
+            "name": "Enzo Martin",
+            "email": "enzo.r.martin@gmail.com"
+        }
+    ],
+    "main": "",
+    "scripts": {
+        "packages": "grunt packages",
+        "bundles": "grunt makeBundles",
+        "gh-pages": "grunt uploadDocs",
+        "doc": "grunt doc",
+        "test": "node test.js"
+    },
+    "dependencies": {
+        "express": "latest",
+        "compression": "latest",
+        "morgan": "latest",
+        "serve-favicon": "latest",
+        "underscore": "latest",
+        "moment": "latest",
+        "jade": "latest",
+        "i18next": "latest"
+    },
+    "devDependencies": {
+        "bower": "latest",
+        "grunt": "latest",
+        "chai": "latest",
+        "async": "latest",
+        "chai-backbone": "latest",
+        "supertest": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-contrib-clean": "latest",
+        "grunt-contrib-copy": "latest",
+        "grunt-contrib-concat": "latest",
+        "grunt-contrib-jade": "latest",
+        "grunt-contrib-cssmin": "latest",
+        "grunt-sass": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-i18n": "latest",
+        "grunt-bower-task": "latest",
+        "grunt-bowercopy": "latest",
+        "grunt-jsdoc": "latest",
+        "grunt-dust": "latest",
+        "grunt-gh-pages": "latest",
+        "grunt-develop": "latest",
+        "load-grunt-tasks": "latest",
+        "mocha-bamboo-reporter": "latest",
+        "mocha": "latest"
+    }
+}

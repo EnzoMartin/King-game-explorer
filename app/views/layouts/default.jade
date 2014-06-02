@@ -1,0 +1,14 @@
+doctype html
+html(lang='#{lang}')
+    include ../includes/header
+    body#body
+        header#header
+            include ../templates/tpl_header
+        section#content.container
+            block main
+        footer#footer
+        #scripts
+            block footer
+                include ../includes/footer
+            block loaderscript
+                include ../includes/client
