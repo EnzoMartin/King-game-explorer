@@ -33,3 +33,4 @@ bower_components
 /public/fonts/FontAwesome*
 /public/fonts/fontawesome*
 /public/fonts/glyph*
+/public/js/dist

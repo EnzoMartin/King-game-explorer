@@ -1,7 +1,8 @@
 nav.navbar.navbar-inverse.navbar-fixed-top
+    - var home = fileExt? 'index' : '/'
     #alert-container.container
         .navbar-header
-            a.navbar-brand(href='/') King.com
+            a.navbar-brand(href=home + fileExt) King.com
             button.navbar-toggle(data-target='.navbar-collapse', data-toggle='collapse', type='button')
                 span.sr-only= t('app.nav.toggle_nav')
                 span.icon-bar
@@ -10,10 +11,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         nav.collapse.navbar-collapse.navbar-inverse-collapse(role='navigation')
             ul.nav.navbar-nav
                 li
-                    a(href='/')
+                    a(href=home + fileExt)
                         i.fa.fa-gamepad
                         = t('app.nav.games')
                 li
-                    a(href='/library')
+                    a(href=rel + 'library' + fileExt)
                         i.fa.fa-folder
                         = t('app.nav.library')

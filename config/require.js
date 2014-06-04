@@ -74,13 +74,13 @@ var configs = {
     },
     production: {
         urlArgs: pjson.version,
-        baseUrl: process.env.CDN_URL || pjson.CDN_URL || '/js/dist/', // CDN_URL in package.json is set if application was deployed by Grunt
+        baseUrl: 'js',
         map: {
             // Set overrides
         },
         paths: {
-            dust: '../libraries/dust-iterate-helper',
-            localstorage: '../libraries/localstorage',
+            dust: 'libraries/dust-iterate-helper.min',
+            localstorage: 'libraries/localstorage.min',
 
             // Local libs
             lib: 'lib.min',
@@ -171,12 +171,10 @@ function getFiles(config,environment){
                 // Set up the shim for the module
                 module = module.replace('.js','');
 
-                //config.paths[module] = 'en-US/' + module;
-
                 var name = module.replace('.min','');
                 config.shim[name] = ['BB','BBA','router'];
 
-                config.paths[name] = 'en-US/' + module;
+                config.paths[name] = module;
             }
         });
     }

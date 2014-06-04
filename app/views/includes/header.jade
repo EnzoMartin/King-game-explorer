@@ -7,10 +7,10 @@ head
         title #{title} - #{headline}
     meta(http-equiv='Content-type', content='text/html;charset=UTF-8')
 
-    link(rel='stylesheet', href='/css/ui-lightness/jquery-ui' + ext + '.css')
-    link(rel='stylesheet', href='/css/bootstrap' + ext + '.css')
-    link(rel='stylesheet', href='/css/font-awesome' + ext + '.css')
-    link(rel='stylesheet', href='/css/structure' + ext + '.css')
+    link(rel='stylesheet', href=rel + 'css/ui-lightness/jquery-ui' + ext + '.css')
+    link(rel='stylesheet', href=rel + 'css/bootstrap' + ext + '.css')
+    link(rel='stylesheet', href=rel + 'css/font-awesome' + ext + '.css')
+    link(rel='stylesheet', href=rel + 'css/structure' + ext + '.css')
 
     block templates
         if loadAllTemplates

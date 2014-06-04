@@ -1,7 +1,7 @@
 {
     "name": "simple-app-01",
-    "title": "Games",
-    "headline": "powered by Backbone",
+    "title": "Application",
+    "headline": "by Enzo Martin",
     "description": "Simple Backbone application",
     "version": "0.0.1",
     "repository": {

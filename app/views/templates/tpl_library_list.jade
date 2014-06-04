@@ -10,7 +10,7 @@
                 .toggle-own.btn.btn-warning(data-id='{short}')= t('app.buttons.remove')
                 | {/inLibrary}
             .panel-body
-                a(href='/{short}')
+                a(href=rel + '{short}' + fileExt)
                     img(src='http://i1.midasplayer.com/images/games/{short}/{short}_170x80.gif')
     |    {/games}
     | {:else}

@@ -4,6 +4,11 @@ module.exports = {
             {expand: true, cwd: 'public/js', src: '*.js', dest: '.grunt/.modules'}
         ]
     },
+    final: {
+        files: [
+            // Override from the task
+        ]
+    },
     locales: {
         expand: true,
         src: ['locales/**/server.json'],

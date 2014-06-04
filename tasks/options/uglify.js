@@ -35,6 +35,15 @@ module.exports = {
             },
             {
                 expand: true,
+                cwd: 'public/js/libraries',
+                src: '*.js',
+                dest: 'public/js/dist/libraries/',
+                rename: function (dest, src) {
+                    return dest + src.replace('.js','.min.js');
+                }
+            },
+            {
+                expand: true,
                 cwd: 'public/js/libraries/bower',
                 src: '*.js',
                 dest: 'public/js/dist/libraries/bower/',

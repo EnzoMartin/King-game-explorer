@@ -1,5 +1,7 @@
-var env = process.env.NODE_ENV || 'development';
+var env = 'production';
 var config = require('./config/config')(env);
+
+config.loadAllTemplates = false;
 
 /**
  * Loads all the various grunt task config files we have

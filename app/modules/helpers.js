@@ -25,7 +25,9 @@ function getFiles(req){
     var data = {
         bootstrapped: module.exports.gamesJSON,
         games: module.exports.games,
-        lang: 'en',
+        rel: typeof req.rel === 'undefined'? '/' : req.rel,
+        fileExt: typeof req.fileExt === 'undefined'? '' : req.fileExt,
+        lang: req.locale || 'en',
         loadAllTemplates: config.loadAllTemplates,
         requireUrl: requireUrl,
         ext: ext,

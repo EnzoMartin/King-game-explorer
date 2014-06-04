@@ -1,4 +1,7 @@
 var fs = require('fs');
+var Helpers = require('../app/modules/helpers');
+var Games = require('../app/controllers/games');
+var i18n = require('i18next');
 
 /**
  * @name Generate JS Bundles
@@ -10,9 +13,9 @@ module.exports = function(grunt){
         var tasks = [
             'clean:modules',
             'copy:templates',
-            'jade:dist',
+            'jade',
             'copy:locales',
-            'i18n:dist',
+            //'i18n:dist',
             'dust:dist',
             'concat:modules',
             'concat:templates',
@@ -24,7 +27,8 @@ module.exports = function(grunt){
             'clean:dist',
             'uglify:dist',
             'cssmin',
-            'clean:final'
+            'copy:final',
+            //'clean:final'
         ];
 
         // Our grunt build directory
@@ -116,8 +120,68 @@ module.exports = function(grunt){
             });
         });
 
-        // Delete everything in the templates.jade file
-        fs.truncateSync('./app/views/templates.jade', 0);
+        // Build the localized base files for the games and pages
+        i18n.init({
+            resGetPath: '../locales/__lng__/__ns__.json',
+            fallbackLng: 'en-US',
+            ns: 'server',
+            saveMissing: false,
+            debug: false
+        });
+
+
+        var languages = fs.readdirSync('locales');
+        languages.forEach(function(language){
+            i18n.setLng(language);
+            var locale = language.substr(0,2);
+
+            (function(Helpers){
+                var games = JSON.parse(fs.readFileSync('public/json/' + locale + '-games-full.json','utf8'));
+
+                Helpers.games = games;
+                Helpers.gamesJSON = JSON.stringify({games:games});
+
+                var files = {};
+                files['.dist/' + language + '/index.html'] = 'app/views/index.jade';
+                files['.dist/' + language + '/library.html'] = 'app/views/library.jade';
+
+                games.forEach(function(game){
+                    Helpers.gamesByShort[game.short] = game;
+
+                    var gameFile = {};
+                    gameFile['.dist/' + language + '/' + game.short + '.html'] = 'app/views/detail.jade';
+
+                    var data = Helpers.getFiles({locale:locale,rel:'',fileExt:'.html',params:{game:game.short}});
+                    data.t = i18n.t;
+                    jadeConfig['html-' + language + '-' + game.short] = {
+                        options: {
+                            data: data
+                        },
+                        files: gameFile
+                    };
+                });
+
+                var data = Helpers.getFiles({locale:locale,rel:'',fileExt:'.html',params:{}});
+                data.t = i18n.t;
+                jadeConfig['html-' + language] = {
+                    options: {
+                        data: data
+                    },
+                    files: files
+                };
+            }(Helpers));
+
+            copyConfig.final.files.push({expand: true, cwd: 'public/js/dist/', src: '*.js', dest: '.dist/' + language + '/js'});
+            copyConfig.final.files.push({expand: true, cwd: 'public/js/dist/' + language, src: '*.js', dest: '.dist/' + language + '/js'});
+            copyConfig.final.files.push({expand: true, cwd: 'public/js/dist/libraries/', src: '*.js', dest: '.dist/' + language + '/js/libraries'});
+            copyConfig.final.files.push({expand: true, cwd: 'public/js/dist/libraries/bower/', src: '*.js', dest: '.dist/' + language + '/js/libraries/bower'});
+            copyConfig.final.files.push({expand: true, cwd: 'public/css', src: '**/*.*', dest: '.dist/' + language + '/css'});
+            copyConfig.final.files.push({expand: true, cwd: 'public/fonts', src: '*.*', dest: '.dist/' + language + '/fonts'});
+            copyConfig.final.files.push({expand: true, cwd: 'public/img', src: '*.*', dest: '.dist/' + language + '/img'});
+            copyConfig.final.files.push({expand: true, cwd: 'public/', src: 'favicon.ico', dest: '.dist/' + language});
+        });
+
+
 
         // Set our new configs
         grunt.config('concat',concatConfig);
