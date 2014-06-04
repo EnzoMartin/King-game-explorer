@@ -17,7 +17,7 @@ define([
             var savedData = {};
 
             if(typeof Storage !== 'undefined'){
-                savedData = JSON.parse(localStorage.getItem('inLibrary'));
+                savedData = JSON.parse(localStorage.getItem('inLibrary')) || {};
                 this.on('change',this.saveStorage,this);
             }
 

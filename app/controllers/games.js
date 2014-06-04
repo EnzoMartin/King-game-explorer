@@ -36,11 +36,17 @@ module.exports = {
         res.render('detail',Helpers.getFiles(req));
     },
 
-    fetchAllGames: function(games,callback){
+    /**
+     * Fetches all game information from the internet
+     * @param games
+     * @param callback
+     * @param [locale]
+     */
+    fetchAllGames: function(games,callback,locale){
         var queue = [];
 
         games.forEach(function(game){
-            queue.push(Helpers.makePromise(module.exports.fetchGame,[game.short,game.url,'en']));
+            queue.push(Helpers.makePromise(module.exports.fetchGame,[game.short,game.url,locale || 'en']));
         });
 
         Q.allSettled(queue).spread(function(){
