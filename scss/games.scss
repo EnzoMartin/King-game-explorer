@@ -1,0 +1,29 @@
+.game {
+    .panel-body {
+        padding: 0;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        a {
+            display: block;
+        }
+    }
+}
+
+#games-list {
+
+}
+
+#game-detail {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .col-xs-12 {
+        background: transparent top center no-repeat;
+    }
+}

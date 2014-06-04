@@ -13,7 +13,7 @@
     ], function(BB,Backbone,$,BBA) {
         return Backbone.Router.extend({
             /**
-             * Initializes the header, binds the route event to update header, and binds the history push on click
+             * Initializes the header/footer, binds the route event to update header, and binds the history push on click
              */
             initialize: function(){
                 var _this = this;
@@ -43,6 +43,9 @@
                 });
             },
 
+            /**
+             * 404 page
+             */
             notFound: function(){
                 require(['common'],function(){
                     var view = BB.get({view:'notFound'});
@@ -51,40 +54,47 @@
             },
 
             /**
-             * Generic loading page route
+             * Games list view
              */
-            renderLoading: function(){
-                require(['common'],function(){
-                    var view = BB.get({view:'loading'});
+            renderGames: function(){
+                require(['games'],function(){
+                    var view = BB.get({view:'list',collection:'games'});
                     BBA.render(view);
                 });
             },
 
             /**
-             * Generic coming soon page
+             * Single game view
+             * @param id
              */
-            renderComingSoon: function(){
-                require(['common'],function(){
-                    var view = BB.get({view:'comingSoon'});
-                    BBA.render(view);
+            renderGame: function(id){
+                var _this = this;
+                require(['games'],function(){
+                    var collection = BB.get({collection:'games'});
+                    var model = collection.get(id);
+                    if(!model){
+                        _this.notFound();
+                    } else {
+                        var view = BB.get({view:{name:'detail',reset:true},model:model,collection:collection});
+                        BBA.render(view);
+                    }
                 });
             },
 
             /**
-             * Home page
+             * User's library
              */
-            renderHome: function(){
-                require(['home'],function(){
-                    var view = BB.get({view:'home'});
+            renderLibrary: function(){
+                require(['games','library'],function(){
+                    var view = BB.get({view:'libraryList',collection:'games'});
                     BBA.render(view);
                 });
             },
 
             routes: {
-                ''                     :'renderHome',
-                'loading'              :'renderLoading',
-                'coming-soon'          :'renderComingSoon',
-                '*notFound'            :'notFound' // This should always be last as it handles our 404 page
+                ''                     :'renderGames',
+                'library'              :'renderLibrary',
+                ':game'                :'renderGame'
             }
         });
     });

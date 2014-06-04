@@ -2,7 +2,7 @@ var config = require('./config');
 var Helpers = require('../app/modules/helpers');
 
 // Controllers
-var Common = require('../app/controllers/common');
+var Games = require('../app/controllers/games');
 
 /**
  * @module Express Router
@@ -19,7 +19,13 @@ module.exports = function(app){
      }
 
     app.route('/')
-        .get(Common.home);
+        .get(Games.list);
+
+    app.route('/library')
+        .get(Games.library);
+
+    app.route('/:game')
+        .get(Games.view);
 
     /**
      * Backbone catch-all pass-through route
@@ -72,7 +78,9 @@ module.exports = function(app){
             res.status(500);
             res.format({
                 'text/html': function(){
-                    res.render('500',{lang:'en',error:err,ext:Helpers.ext});
+                    var data = Helpers.getFiles(req);
+                    data.error = err;
+                    res.render('500',data);
                 },
                 'application/json': function(){
                     res.send({error:err});
@@ -84,7 +92,9 @@ module.exports = function(app){
             res.status(500);
             res.format({
                 'text/html': function(){
-                    res.render('500',{auth:false,lang:'en',error:err,ext:Helpers.ext});
+                    var data = Helpers.getFiles(req);
+                    data.error = err;
+                    res.render('500',data);
                 },
                 'application/json': function(){
                     res.send({error:err});

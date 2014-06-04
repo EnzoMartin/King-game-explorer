@@ -1,0 +1,19 @@
+.row
+    .col-xs-12(style='background-image:url(http://i2.midasplayer.com/images/games/{short}/tournamentPage/{short}_764x260.jpg)')
+        .page-header
+            h1 {name}
+                small.pull-right
+                    | {^inLibrary}
+                    .toggle-own.btn.btn-success(data-id='{short}')= t('app.buttons.add')
+                    | {:else}
+                    .toggle-own.btn.btn-warning(data-id='{short}')= t('app.buttons.remove')
+                    | {/inLibrary}
+        .page-content
+            | {?description}
+            p {description|s}
+            |    {?playBtn}
+            a.btn.btn-success.btn-lg(href='http://www.royalgames.com{playBtn}',target='_blank') Play
+            |    {:else}
+            a.btn.btn-success.btn-lg(href='http://www.royalgames.com{signupBtn}',target='_blank') Signup
+            |    {/playBtn}
+            | {/description}

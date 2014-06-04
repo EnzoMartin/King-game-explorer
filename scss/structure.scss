@@ -1,4 +1,22 @@
 // Used for all our SCSS file imports
 @import "bootstrap/_mixins";
+@font-face {
+    font-family: "appFont";
+    font-weight: normal;
+    src: url("https://k1.midasplayer.com/images/fonts/SuperGroteskWebPro.eot?_v=bawrt0#iefix") format("embedded-opentype"), url("https://k1.midasplayer.com/images/fonts/SuperGroteskWebPro.woff?_v=135js77") format("woff");
+}
+@font-face {
+    font-family: "appFont";
+    font-weight: bold;
+    src: url("https://k1.midasplayer.com/images/fonts/SuperGroteskWebPro-Medium.eot?_v=150jiug#iefix") format("embedded-opentype"), url("https://k1.midasplayer.com/images/fonts/SuperGroteskWebPro-Medium.woff?_v=1ikapgh") format("woff");
+}
+@font-face {
+    font-family: "kingIcons";
+    font-style: normal;
+    font-weight: normal;
+    src: url("https://k1.midasplayer.com/images/fonts/king-icon.eot?_v=1wty0ru#iefix") format("embedded-opentype"), url("https://k1.midasplayer.com/images/fonts/king-icon.woff?_v=c0qgut") format("woff"), url("https://k1.midasplayer.com/images/fonts/king-icon.ttf?_v=1wjwjwb") format("truetype");
+}
+
 @import "variables";
 @import "global";
+@import "games";

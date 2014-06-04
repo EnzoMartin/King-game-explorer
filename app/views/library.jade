@@ -1,0 +1,10 @@
+extends layouts/default
+
+block main
+    #library-list
+        .row
+            .col-xs-12
+                .page-header
+                    h1= t('app.library.title')
+                .page-content
+                    p!= t('app.library.empty')

@@ -32,6 +32,7 @@ var shared = {
         }
     },
     paths: {
+        localstorage: 'libraries/localstorage',
         dust: 'libraries/dust-iterate-helper'
     }
 };
@@ -60,6 +61,7 @@ var configs = {
         },
         paths: {
             dust: '../libraries/dust-iterate-helper',
+            localstorage: '../libraries/localstorage',
 
             // Local libs
             lib: 'lib.min',
@@ -77,12 +79,13 @@ var configs = {
             // Set overrides
         },
         paths: {
-            dust: ['../libraries/dust-iterate-helper'],
+            dust: '../libraries/dust-iterate-helper',
+            localstorage: '../libraries/localstorage',
 
             // Local libs
-            lib: ['lib.min'],
-            main: ['main.min'],
-            router: ['router.min']
+            lib: 'lib.min',
+            main: 'main.min',
+            router: 'router.min'
         },
         shim: {
             // Set overrides

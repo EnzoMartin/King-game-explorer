@@ -1,6 +1,7 @@
 var pjson = require('../../package.json');
 var config = require('../../config/config');
 var i18n = require('i18next');
+var Q = require('q');
 
 /**
  * @name Express Helpers
@@ -15,16 +16,15 @@ var requireUrl = requireConfig.baseUrl + requireConfig.paths.require + '.js';
 // Set the .min extension for CSS for production only
 var ext = config.env === 'development'? '' : '.min';
 
-var games = JSON.stringify(require('../../public/json/games.json'));
-
 /**
  * Get base file definitions and global app data to pass to template
  * @param req {*} Express request object
  */
 function getFiles(req){
     // Pass all the variables needed for the page render
-    return {
-        bootstrapped: games,
+    var data = {
+        bootstrapped: module.exports.gamesJSON,
+        games: module.exports.games,
         lang: 'en',
         loadAllTemplates: config.loadAllTemplates,
         requireUrl: requireUrl,
@@ -33,10 +33,22 @@ function getFiles(req){
         headline: pjson.headline,
         requireConfig: requireConfig
     };
+
+    if(req.params.game){
+        data.game = module.exports.gamesByShort[req.params.game]
+    }
+
+    return data;
 }
 
 module.exports = {
     requireConfig: requireConfig,
+
+    games: {},
+
+    gamesJSON: '{}',
+
+    gamesByShort: {},
 
     getFiles: getFiles,
 
@@ -66,5 +78,29 @@ module.exports = {
                 res.send(data || err);
             }
         });
+    },
+
+    /**
+     * Makes a promise and returns it
+     * @param method
+     * @param [params]
+     * @returns {promise}
+     */
+    makePromise: function(method,params){
+        var d = Q.defer();
+        var args = [];
+
+        if(typeof params !== 'object'){
+            args.push(params);
+        } else {
+            args = params;
+        }
+
+        args.push(function(err, data){
+            d.resolve(err || data);
+        });
+        method.apply(method,args);
+
+        return d.promise;
     }
 };

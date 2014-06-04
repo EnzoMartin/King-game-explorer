@@ -4,9 +4,11 @@ html(lang='#{lang}')
     body#body
         header#header
             include ../templates/tpl_header
-        section#content.container
-            block main
+        block container
+            section#content.container
+                block main
         footer#footer
+            include ../templates/tpl_footer
         #scripts
             block footer
                 include ../includes/footer

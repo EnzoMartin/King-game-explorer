@@ -1,7 +1,12 @@
 extends layouts/default
 
 block main
-    .row
-        .col-xs-12
-            .page-header
-                h1 Home
+    #games-list
+        .row
+            each game in games
+                .game.col-xs-6.col-sm-3.col-md-2
+                    .panel.panel-default
+                        .panel-heading= game.name
+                        .panel-body
+                            a(href='/' + game.short)
+                                img(src='http://i1.midasplayer.com/images/games/' + game.short + '/' + game.short + '_170x80.gif')

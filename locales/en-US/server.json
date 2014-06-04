@@ -1,7 +1,7 @@
 {
     "app": {
         "nav": {
-            "home": "Home",
+            "library": "My Library",
             "toggle_nav": "Toggle Nav",
             "github": "GitHub Project",
             "games": "Games"
@@ -28,12 +28,19 @@
             "view": "View",
             "search": "Search",
             "go": "Go",
+            "add": "Add",
+            "remove": "Remove",
             "cancel": "Cancel",
+            "reset": "Reset",
             "submit": "Submit"
         },
         "generic": {
             "loading": "Loading",
             "wait": "Please wait"
+        },
+        "library": {
+            "title": "My Library",
+            "empty": "Oh dear, the library is empty! Why not populate it with some <a href='/'>delectable games</a>?"
         }
     }
 }

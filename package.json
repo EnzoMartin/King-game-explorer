@@ -27,6 +27,8 @@
         "express": "latest",
         "compression": "latest",
         "morgan": "latest",
+        "q": "latest",
+        "cheerio": "latest",
         "serve-favicon": "latest",
         "underscore": "latest",
         "moment": "latest",

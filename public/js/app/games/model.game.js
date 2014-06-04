@@ -8,8 +8,10 @@ define([
     'backbone'
 ],function(BB,Backbone){
     return BB.model_definitions.game = Backbone.Model.extend({
-        defaults:{
+        default: {
+            inLibrary: false
+        },
 
-        }
+        idAttribute: 'short'
     });
 });
