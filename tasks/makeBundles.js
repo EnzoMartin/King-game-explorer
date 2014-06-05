@@ -60,6 +60,11 @@ module.exports = function(grunt){
         var locales = fs.readdirSync('locales');
         grunt.log.writeln(locales.length + ' locales to compile');
 
+        copyConfig.templates.files.push(
+            {expand:true,cwd:'app/views/includes',src:'*.*',dest:'.grunt/.templates/includes'},
+            {expand:true,cwd:'app/views/snippets',src:'*.*',dest:'.grunt/.templates/snippets'}
+        );
+
         // Iterate over the modules
         modules.forEach(function(moduleName){
             var filesPath = dir + '/' + moduleName;
@@ -131,7 +136,6 @@ module.exports = function(grunt){
 
 
         var languages = fs.readdirSync('locales');
-        languages = ['en-US'];
         languages.forEach(function(language){
             i18n.setLng(language);
             var locale = language.substr(0,2);
