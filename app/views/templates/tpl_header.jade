@@ -3,8 +3,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top
     .navbar-background
         #alert-container.container
             .navbar-header
-                a.navbar-brand(href=home + fileExt)
+                a.hidden-xs.navbar-brand.brand-image(href=home + fileExt)
                     #logo
+                a.visible-xs.navbar-brand.brand-small(href=home + fileExt) King
                 button.navbar-toggle(data-target='.navbar-collapse', data-toggle='collapse', type='button')
                     span.sr-only= t('app.nav.toggle_nav')
                     span.icon-bar

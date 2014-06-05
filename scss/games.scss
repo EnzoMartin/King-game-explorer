@@ -95,3 +95,14 @@
         display: none;
     }
 }
+
+@media (max-width: $screen-xs-max) {
+    #game-detail {
+        .col-xs-12 {
+            .thumbnail {
+                margin-top: 10px;
+                width: auto;
+            }
+        }
+    }
+}

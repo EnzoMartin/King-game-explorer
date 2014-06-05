@@ -9,11 +9,20 @@
             @include gradient-vertical(#FFFFFF, #E6E6E6);
         }
 
+        .navbar-toggle {
+            background: #636363;
+            margin-right: 20px;
+        }
+
         .navbar-header {
             position: relative;
         }
 
-        .navbar-brand {
+        .brand-small {
+            padding-left: 25px;
+        }
+
+        .brand-image {
             position: absolute;
             top: -3px;
             left: 0;
@@ -50,6 +59,25 @@
                         color: #ea5301;
                         background-color: #FFFFFF;
                         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.67);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-xs-max) {
+    #header {
+        .navbar {
+            .navbar-nav {
+                li > a {
+                    padding-left: 25px;
+                }
+
+                li.active {
+                    a {
+                        background: transparent;
+                        box-shadow: none;
                     }
                 }
             }

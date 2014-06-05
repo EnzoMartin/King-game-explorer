@@ -70,11 +70,13 @@ ul, ol {
     border: 1px solid #FFFFFF;
     border-radius: 3px;
     padding: 5px 32px 5px 5px;
-    height: 45px;
+    min-height: 45px;
+    margin-bottom: 5px;
 
     .form-group {
         width: 190px;
         margin-left: 25px;
+        margin-bottom: 0;
     }
 
     .checkbox-group {
