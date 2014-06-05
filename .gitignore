@@ -21,6 +21,7 @@ bower_components
 /.idea
 
 # Misc
+/.dist
 /.sass-cache
 /scss/bootstrap
 /public/js/libraries/bower

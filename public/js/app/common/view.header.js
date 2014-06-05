@@ -35,9 +35,9 @@ define([
          * @param href string URL fragment
          */
         setActive: function(href){
-            var path = '/' + href.split('/')[0];
+            var path = href.split('/')[0] || '/';
             this.$el.find('li').removeClass('active');
-            this.$el.find('a[href="' + path + '"]').parent('li').addClass('active');
+            this.$el.find('a[href$="' + path + '"]').parent('li').addClass('active');
         },
 
         render: function(){

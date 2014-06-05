@@ -10,11 +10,15 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                 span.icon-bar
         nav.collapse.navbar-collapse.navbar-inverse-collapse(role='navigation')
             ul.nav.navbar-nav
-                li
+                - var homeClass = ''
+                - var libraryClass = ''
+                block activeMenu
+
+                li(class=homeClass)
                     a(href=home + fileExt)
                         i.fa.fa-gamepad
                         = t('app.nav.games')
-                li
+                li(class=libraryClass)
                     a(href=rel + 'library' + fileExt)
                         i.fa.fa-folder
                         = t('app.nav.library')

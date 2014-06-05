@@ -15,7 +15,7 @@ module.exports = function(grunt){
             'copy:templates',
             'jade',
             'copy:locales',
-            //'i18n:dist',
+            'i18n:dist',
             'dust:dist',
             'concat:modules',
             'concat:templates',
@@ -122,7 +122,7 @@ module.exports = function(grunt){
 
         // Build the localized base files for the games and pages
         i18n.init({
-            resGetPath: '../locales/__lng__/__ns__.json',
+            resGetPath: '../../locales/__lng__/__ns__.json',
             fallbackLng: 'en-US',
             ns: 'server',
             saveMissing: false,
@@ -131,6 +131,7 @@ module.exports = function(grunt){
 
 
         var languages = fs.readdirSync('locales');
+        languages = ['en-US'];
         languages.forEach(function(language){
             i18n.setLng(language);
             var locale = language.substr(0,2);

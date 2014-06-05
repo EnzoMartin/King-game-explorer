@@ -169,8 +169,15 @@
 
         // Make new instance of the router
         this.router = new router(routerData);
+
+        // Set the root, needed for browsing from local file instead of a server
+        var root = window.location.pathname.split('/');
+        root.pop();
         // Start backbone history with history push
-        Backbone.history.start({pushState: true});
+        Backbone.history.start({
+            pushState: true,
+            root: root.join('/')
+        });
     };
 
     return BBA;

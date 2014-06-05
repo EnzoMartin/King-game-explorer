@@ -19,8 +19,8 @@ module.exports = {
     },
     dist: {
         options: {
-            beautify: false,
-            mangle: true,
+            beautify: true,
+            mangle: false,
             sourceMap: true
         },
         files: [

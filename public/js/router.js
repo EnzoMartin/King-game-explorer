@@ -28,18 +28,21 @@
                         header.setActive(Backbone.history.fragment);
                     });
 
-                    // Set up the history push on click
-                    $(window.document).on('click', 'a[href^="/"]:not([target="_blank"])', function(event) {
-                        if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
-                            var href = this.getAttribute('href');
-                            var protocol = this.protocol + '//';
+                    // Can't use history pushstate if we're not being served from a server due to security restrictions in the browser
+                    if(window.location.origin != 'file://'){
+                        // Set up the history push on click
+                        $(window.document).on('click', 'a:not([href^="http"],[target="_blank"])', function(event) {
+                            if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
+                                var href = this.getAttribute('href');
+                                var protocol = this.protocol + '//';
 
-                            if (href.slice(protocol.length) !== protocol) {
-                                event.preventDefault();
-                                _this.navigate(href, {trigger:true});
+                                if (href.slice(protocol.length) !== protocol) {
+                                    event.preventDefault();
+                                    _this.navigate(href, {trigger:true});
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 });
             },
 
@@ -71,7 +74,7 @@
                 var _this = this;
                 require(['games'],function(){
                     var collection = BB.get({collection:'games'});
-                    var model = collection.get(id);
+                    var model = collection.get(id.replace('.html',''));
                     if(!model){
                         _this.notFound();
                     } else {
@@ -92,6 +95,10 @@
             },
 
             routes: {
+                // Support local file view
+                'index.html'           :'renderGames',
+                'library.html'         :'renderLibrary',
+
                 ''                     :'renderGames',
                 'library'              :'renderLibrary',
                 ':game'                :'renderGame'
