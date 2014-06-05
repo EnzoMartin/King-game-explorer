@@ -31,7 +31,7 @@
                     // Can't use history pushstate if we're not being served from a server due to security restrictions in the browser
                     if(window.location.origin != 'file://'){
                         // Set up the history push on click
-                        $(window.document).on('click', 'a:not([href^="http"],[target="_blank"])', function(event) {
+                        $(window.document).on('click', 'a:not([href^="http"],[target="_blank"],[class="reload"])', function(event) {
                             if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
                                 var href = this.getAttribute('href');
                                 var protocol = this.protocol + '//';

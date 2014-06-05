@@ -1,10 +1,10 @@
 {
     "app": {
         "nav": {
-            "library": "My Library",
+            "library": "La mia biblioteca",
             "toggle_nav": "Toggle Nav",
             "github": "GitHub Project",
-            "games": "Games"
+            "games": "Giochi"
         },
         "error": {
             "page_not_found": {
@@ -19,19 +19,19 @@
             "title": "An error occurred!"
         },
         "buttons": {
-            "add": "Save",
-            "remove": "Remove"
+            "add": "Salva",
+            "remove": "Rimuovi"
         },
         "generic": {
-            "type": "Start typing..",
-            "all": "All",
-            "not_library": "Not in library",
+            "type": "Iniziare a digitare..",
+            "all": "Tutti",
+            "not_library": "Non è in libreria",
             "oops": "Oops!",
-            "no_games": "Oh dear, looks like we couldn't find any games matching that search",
-            "no_description": "No description provided"
+            "no_games": "Oh cara, sembra che non siamo riusciti a trovare tutti i giochi corrispondenti a questa ricerca",
+            "no_description": "Nessuna descrizione disponibile"
         },
         "library": {
-            "empty": "Oh dear, nothing found in the library! Why not populate it?"
+            "empty": "Oh cara, non abbiamo trovato nulla nella biblioteca Perché non popolarlo?"
         }
     }
 }

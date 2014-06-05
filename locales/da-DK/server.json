@@ -1,14 +1,14 @@
 {
     "app": {
         "nav": {
-            "library": "My Library",
+            "library": "Mit bibliotek",
             "toggle_nav": "Toggle Nav",
             "github": "GitHub Project",
-            "games": "Games"
+            "games": "Spil"
         },
         "error": {
             "page_not_found": {
-                "title": "Sorry, the page could not be found",
+                "title": "Beklager, kunne den side ikke fundet",
                 "description": "You can go back ",
                 "home": "home",
                 "back": " or go back to the ",
@@ -16,22 +16,22 @@
             },
             "required": "This field is required",
             "server_error": "Server Error",
-            "title": "An error occurred!"
+            "title": "Der opstod en fejl !"
         },
         "buttons": {
-            "add": "Save",
-            "remove": "Remove"
+            "add": "Gem",
+            "remove": "Fjern"
         },
         "generic": {
-            "type": "Start typing..",
-            "all": "All",
-            "not_library": "Not in library",
-            "oops": "Oops!",
-            "no_games": "Oh dear, looks like we couldn't find any games matching that search",
-            "no_description": "No description provided"
+            "type": "Begynd at skrive..",
+            "all": "Alle",
+            "not_library": "Ikke i bibliotek",
+            "oops": "Ups!",
+            "no_games": "Oh dear , ligner vi ikke kunne finde nogen spil der matcher denne søgning",
+            "no_description": "Ingen beskrivelse til rådighed"
         },
         "library": {
-            "empty": "Oh dear, nothing found in the library! Why not populate it?"
+            "empty": "Åh kære , intet fundet i biblioteket Hvorfor ikke befolke det?"
         }
     }
 }

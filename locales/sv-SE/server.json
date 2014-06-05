@@ -1,10 +1,10 @@
 {
     "app": {
         "nav": {
-            "library": "My Library",
+            "library": "Mitt bibliotek",
             "toggle_nav": "Toggle Nav",
             "github": "GitHub Project",
-            "games": "Games"
+            "games": "Spel"
         },
         "error": {
             "page_not_found": {
@@ -19,19 +19,19 @@
             "title": "An error occurred!"
         },
         "buttons": {
-            "add": "Save",
-            "remove": "Remove"
+            "add": "Spara",
+            "remove": "Ta bort"
         },
         "generic": {
-            "type": "Start typing..",
-            "all": "All",
-            "not_library": "Not in library",
-            "oops": "Oops!",
-            "no_games": "Oh dear, looks like we couldn't find any games matching that search",
-            "no_description": "No description provided"
+            "type": "Börja skriva..",
+            "all": "Alla",
+            "not_library": "Inte i biblioteket",
+            "oops": "Oj!",
+            "no_games": "Oj, det ser ut som vi inte kunde hitta några spel som matchar denna sökning",
+            "no_description": "Ingen beskrivning tillgänglig"
         },
         "library": {
-            "empty": "Oh dear, nothing found in the library! Why not populate it?"
+            "empty": "Åh kära , ingenting finns i biblioteket Varför inte fylla den?"
         }
     }
 }

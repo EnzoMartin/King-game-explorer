@@ -5,4 +5,7 @@
                 ul.list-inline
                     each name, code in languages
                         li
-                            a(href='../' + code)= name
+                            - var file = ''
+                            if fileExt
+                                - file = '/index.html'
+                            a.reload(href='../' + code + file)= name
