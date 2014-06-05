@@ -3,7 +3,6 @@ var i18n = require('i18next');
 var config = require('../config/config');
 var compress = require('compression');
 var logger = require('morgan');
-var favicon = require('serve-favicon');
 
 /**
  * @module Express App
@@ -43,7 +42,6 @@ module.exports = function(app){
 	app.set('view engine','jade');
 
     app.use(i18n.handle);
-    app.use(favicon('./public/favicon.ico'));
 
     // Register our localization
     i18n.registerAppHelper(app);

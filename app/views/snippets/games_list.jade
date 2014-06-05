@@ -1,0 +1,19 @@
+| {#games}
+.col-xs-6.col-sm-3.col-md-2
+    .game.panel.panel-default
+        .panel-body
+            .toggle-library
+                | {^inLibrary}
+                .toggle-own.btn(data-id='{short}')
+                    span
+                        i.fa.fa-heart-o
+                        = t('app.buttons.add')
+                | {:else}
+                .toggle-own.btn.owned(data-id='{short}')
+                    span
+                        i.fa.fa-heart
+                        = t('app.buttons.remove')
+                | {/inLibrary}
+            a(href=rel + '{short}' + fileExt)
+                img(src='http://i1.midasplayer.com/images/games/{short}/{short}_170x80.gif')
+| {/games}

@@ -128,7 +128,7 @@ module.exports = {
                             }
 
                             if(data.css.background){
-                                data.css.background = data.css.background.replace('-o-linear-gradient','linear-gradient');
+                                data.css.background = data.css.background.replace('-o-linear-gradient','linear-gradient').replace('top','to top');
                             }
 
                             data.short = short;

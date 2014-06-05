@@ -1,19 +1,34 @@
 .row
-    .col-xs-12(style='background-image:url(http://i2.midasplayer.com/images/games/{short}/tournamentPage/{short}_764x260.jpg)')
-        .page-header
-            h1 {name}
-                small.pull-right
-                    | {^inLibrary}
-                    .toggle-own.btn.btn-success(data-id='{short}')= t('app.buttons.add')
-                    | {:else}
-                    .toggle-own.btn.btn-warning(data-id='{short}')= t('app.buttons.remove')
-                    | {/inLibrary}
-        .page-content
-            | {?description}
-            p {description|s}
-            |    {?playBtn}
-            a.btn.btn-success.btn-lg(href='http://www.royalgames.com{playBtn}',target='_blank') Play
-            |    {:else}
-            a.btn.btn-success.btn-lg(href='http://www.royalgames.com{signupBtn}',target='_blank') Signup
-            |    {/playBtn}
-            | {/description}
+    .col-xs-12
+        .bg-color(style='{?css}{?css.background}background-image:{css.background};{/css.background}{/css}')
+            .bg-image(style='background-image:url(http://i2.midasplayer.com/images/games/{short}/tournamentPage/{short}_764x260.jpg);')
+                .page-header
+                    h1 {name}
+                .page-content
+                    .col-xs-12.col-sm-8.content
+                        | {?description}
+                        | {description|s}
+                        | {:else}
+                        h2= t('app.generic.no_description')
+                        | {/description}
+                    .col-xs-12.col-sm-3
+                        .thumbnail
+                            img(src='http://i1.midasplayer.com/images/games/{short}/dumps/screen_{short}.gif')
+                        | {?playBtn}
+                        a.btn.btn-green(href='http://www.royalgames.com{playBtn}',target='_blank') Play
+                        | {:else}
+                        a.btn.btn-green(href='http://www.royalgames.com{signupBtn}',target='_blank') Signup
+                        | {/playBtn}
+                        .btn-container
+                            .toggle-library
+                                | {^inLibrary}
+                                .toggle-own.btn(data-id='{short}')
+                                    span
+                                        i.fa.fa-heart-o
+                                        = t('app.buttons.add')
+                                | {:else}
+                                .toggle-own.btn.owned(data-id='{short}')
+                                    span
+                                        i.fa.fa-heart
+                                        = t('app.buttons.remove')
+                                | {/inLibrary}

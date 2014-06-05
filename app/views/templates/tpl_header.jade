@@ -1,24 +1,12 @@
-nav.navbar.navbar-inverse.navbar-fixed-top
-    - var home = fileExt? 'index' : '/'
-    #alert-container.container
-        .navbar-header
-            a.navbar-brand(href=home + fileExt) King.com
-            button.navbar-toggle(data-target='.navbar-collapse', data-toggle='collapse', type='button')
-                span.sr-only= t('app.nav.toggle_nav')
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-        nav.collapse.navbar-collapse.navbar-inverse-collapse(role='navigation')
-            ul.nav.navbar-nav
-                - var homeClass = ''
-                - var libraryClass = ''
-                block activeMenu
+extends ../includes/menu
 
-                li(class=homeClass)
-                    a(href=home + fileExt)
-                        i.fa.fa-gamepad
-                        = t('app.nav.games')
-                li(class=libraryClass)
-                    a(href=rel + 'library' + fileExt)
-                        i.fa.fa-folder
-                        = t('app.nav.library')
+block libraryMenu
+    li(class='{?inLibrary}active{/inLibrary}')
+        a(href=rel + 'library' + fileExt)
+            | {?inLibrary}
+            i.fa.fa-folder-open
+            | {:else}
+            i.fa.fa-folder
+            | {/inLibrary}
+            = t('app.nav.library') + ' '
+            span#count {?count}({count}){/count}

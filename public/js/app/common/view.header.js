@@ -16,9 +16,10 @@ define([
 
         initialize: function(){
             this.body = $('body');
+            this.listenTo(this.collection,'change',this.render);
+            this.listenTo(this.model,'change',this.render);
             this.on('alert',this.triggerAlert,this);
             this.render();
-            this.setActive(Backbone.history.fragment);
         },
 
         /**
@@ -42,7 +43,12 @@ define([
 
         render: function(){
             var _this = this;
-            dust.render(this.template, this.model.toJSON(), function(err, out) {
+            var data = {
+                count: this.collection.filter(function(model){return model.get('inLibrary');}).length,
+                inLibrary: this.model.get('inLibrary')
+            };
+
+            dust.render(this.template, data, function(err, out) {
                 _this.$el.html(out);
             });
         }

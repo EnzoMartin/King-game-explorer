@@ -9,9 +9,7 @@ define([
     'dust'
 ],function(BB,Backbone,dust){
     return BB.view_definitions.libraryList = Backbone.View.extend({
-        id:'library-list',
-
-        title:'Your Library',
+        el:'#games-list',
 
         template:'tpl_library_list',
 
@@ -21,6 +19,7 @@ define([
 
         initialize: function(){
             this.listenTo(this.collection,'change',this.render);
+            this.listenTo(this.model,'change',this.render);
         },
 
         toggleOwn: function(event){
@@ -33,11 +32,24 @@ define([
 
         render:function(){
             var view = this;
-            var data = {
-                games: this.collection.chain().filter(function(model){return model.get('inLibrary');}).invoke('toJSON').value()
-            };
+            var data = this.model.toJSON();
 
-            console.log(data);
+            data.games = this.collection.chain().filter(function(model){
+                var match = true;
+
+                if(data.name){
+                    match = model.get('name').toLowerCase().indexOf(data.name) !== -1;
+                    if(!match) return false;
+                }
+
+                if(data.genre){
+                    match = model.get('type') == data.genre;
+                    if(!match) return false;
+                }
+
+                return match && model.get('inLibrary');
+            }).invoke('toJSON').value();
+
             dust.render(this.template,data,function(err,out){
                 view.$el.html(out);
             });

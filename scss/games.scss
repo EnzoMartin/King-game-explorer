@@ -1,11 +1,13 @@
 .game {
     .panel-body {
         padding: 0;
+        position: relative;
 
         img {
             display: block;
             width: 100%;
             height: auto;
+            transform: translate3d(0px,0px,0px); //Firefox workaround to keep images from shifting when hovered with opacity
         }
 
         a {
@@ -19,11 +21,77 @@
 }
 
 #game-detail {
+    margin-top: -25px;
     max-width: 750px;
     margin-left: auto;
     margin-right: auto;
 
+    .page-content {
+        overflow: hidden;
+    }
+
     .col-xs-12 {
-        background: transparent top center no-repeat;
+        color: #FFFFFF;
+
+        .bg-color {
+            border-radius: 0 0 3px 3px;
+        }
+
+        .bg-image {
+            max-width: 750px;
+            background: transparent top center no-repeat;
+            background-size: 100% auto;
+            padding: 146px 20px 40px;
+        }
+
+        .content {
+            border-radius: 3px;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .page-header {
+            display: none;
+        }
+
+        .thumbnail {
+            width: 194px;
+            border: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .toggle-library {
+            text-align: center;
+            position: static;
+            margin-top: 15px;
+        }
+
+        .btn-container {
+            min-width: 194px;
+        }
+
+        .btn-green {
+            @include gradient-vertical-three-colors(#00835A, #00B17A, 50%, #80DBBE);
+            border: 0 solid rgba(0, 0, 0, 0);
+            border-radius: 4px;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.9), 0 3px 6px rgba(0, 0, 0, 0.5), 1px 1px 1px rgba(255, 255, 255, 0.4) inset, 0 0 10px rgba(255, 255, 255, 0.4) inset;
+            color: #EEEEEE;
+            display: block;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease 0s;
+            min-width: 194px;
+            padding-top: 11px;
+
+            &:hover {
+                box-shadow: 0 0 1px rgba(0, 0, 0, 0.9), 0 3px 6px rgba(0, 0, 0, 0.5), 1px 1px 1px rgba(255, 255, 255, 0.4) inset, 0 0 20px rgba(255, 255, 255, 0.8) inset;
+            }
+        }
+    }
+}
+
+#library {
+    #game-library {
+        display: none;
     }
 }

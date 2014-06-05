@@ -1,4 +1,8 @@
-.container
-    .row
-        .col-xs-12
-            p Footer
+.footer-bg
+    .container
+        .row
+            .col-xs-12
+                ul.list-inline
+                    each name, code in languages
+                        li
+                            a(href='../' + code)= name

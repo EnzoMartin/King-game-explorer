@@ -18,14 +18,14 @@
             initialize: function(){
                 var _this = this;
 
-                require(['common'],function(){
+                require(['common','games'],function(){
                     // Load header and footer views
-                    var header = BB.get({view:'header',model:'header'});
+                    var header = BB.get({view:'header',model:{name:'header',data: {inLibrary:_this.routes[Backbone.history.fragment] == 'renderLibrary'}},collection:'games'});
                     var footer = BB.get({view:'footer',model:'footer'});
 
                     // Set up the bind to update the header active links
-                    _this.on('route',function(){
-                        header.setActive(Backbone.history.fragment);
+                    _this.on('route',function(route){
+                        header.model.set({inLibrary:route == 'renderLibrary'});
                     });
 
                     // Can't use history pushstate if we're not being served from a server due to security restrictions in the browser
@@ -61,7 +61,7 @@
              */
             renderGames: function(){
                 require(['games'],function(){
-                    var view = BB.get({view:'list',collection:'games'});
+                    var view = BB.get({view:'games',model:'filter',collection:'games'});
                     BBA.render(view);
                 });
             },
@@ -89,7 +89,7 @@
              */
             renderLibrary: function(){
                 require(['games','library'],function(){
-                    var view = BB.get({view:'libraryList',collection:'games'});
+                    var view = BB.get({view:'library',model:'libraryFilter',collection:'games'});
                     BBA.render(view);
                 });
             },

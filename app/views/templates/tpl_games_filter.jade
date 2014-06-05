@@ -1,0 +1,15 @@
+.row
+    .col-xs-12
+        form#filter.form-horizontal(role='form')
+            .form-group.pull-right
+                select#game-type.form-control(name='game-type')
+                    option(value='all')= t('app.generic.all')
+                    | {#genres}
+                    option(value='{.}') {.}
+                    | {/genres}
+            .form-group.pull-right
+                input#game-name.form-control(type='text',name='game-name',placeholder=t('app.generic.type'))
+            .pull-right.checkbox-group#game-library
+                label.checkbox-inline
+                    input#game-library-input(type='checkbox',name='game-library',value='{name}')
+                    = t('app.generic.not_library')

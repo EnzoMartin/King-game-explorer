@@ -3,10 +3,9 @@ html(lang='#{lang}')
     include ../includes/header
     body#body
         header#header
-            include ../templates/tpl_header
-        block container
-            section#content.container
-                block main
+            include ../includes/menu
+        section#content.container
+            block main
         footer#footer
             include ../templates/tpl_footer
         #scripts

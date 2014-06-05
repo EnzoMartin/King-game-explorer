@@ -1,0 +1,42 @@
+#footer {
+    .footer-bg {
+        margin-bottom: 2px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.67);
+        @include gradient-vertical(#E6E6E6, #FFFFFF);
+        padding: 15px 0;
+
+        ul {
+            text-align: center;
+            margin: 0;
+
+            li {
+                border-right: 1px solid #C6C6C6;
+                padding: 0 8px;
+
+                &:last-of-type {
+                    border-right: none;
+                }
+            }
+
+            a {
+                color: #00B179;
+                font-size: 14px;
+
+                &:hover {
+                    color: #00c488;
+                }
+            }
+        }
+    }
+
+    background-color: #FF4600;
+    border-top: 1px solid #FFFFFF;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    p {
+        margin: 0;
+    }
+}

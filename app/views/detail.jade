@@ -3,13 +3,25 @@ extends layouts/default
 block main
     #game-detail
         .row
-            .col-xs-12(style='background-image:url(http://i2.midasplayer.com/images/games/' + game.short + '/tournamentPage/' + game.short + '_764x260.jpg)')
-                .page-header
-                    h1= game.name
-                .page-content
-                    if game.description
-                        p!=game.description
-                        if game.playBtn
-                            a.btn.btn-success.btn-lg(href='http://www.royalgames.com' + game.playBtn,target='_blank') Play
-                        else
-                            a.btn.btn-success.btn-lg(href='http://www.royalgames.com' + game.signupBtn,target='_blank') Signup
+            .col-xs-12
+                - var bgColor = ''
+                if game.css
+                    if game.css.background
+                        - bgColor = game.css.background
+                .bg-color(style='background-image:' + bgColor)
+                    .bg-image(style='background-image:url(http://i2.midasplayer.com/images/games/' + game.short + '/tournamentPage/' + game.short + '_764x260.jpg)')
+                        .page-header
+                            h1= game.name
+                        .page-content
+                                .col-xs-12.col-sm-8.content
+                                    if game.description
+                                        !=game.description
+                                    else
+                                        h2= t('app.generic.no_description')
+                                .col-xs-12.col-sm-3
+                                    .thumbnail
+                                        img(src='http://i1.midasplayer.com/images/games/' + game.short + '/dumps/screen_' + game.short + '.gif')
+                                    if game.playBtn
+                                        a.btn.btn-green(href='http://www.royalgames.com' + game.playBtn,target='_blank') Play
+                                    else
+                                        a.btn.btn-green(href='http://www.royalgames.com' + game.signupBtn,target='_blank') Signup

@@ -16,6 +16,16 @@ var requireUrl = requireConfig.baseUrl + requireConfig.paths.require + '.js';
 // Set the .min extension for CSS for production only
 var ext = config.env === 'development'? '' : '.min';
 
+var languages = {
+    'en-US': 'English',
+    'sv-SE': 'Svenska',
+    'da-DK': 'Dansk',
+    'de-DE': 'Deutsch',
+    'es-ES': 'Español',
+    'fr-FR': 'Français',
+    'it-IT': 'Italiano'
+};
+
 /**
  * Get base file definitions and global app data to pass to template
  * @param req {*} Express request object
@@ -31,6 +41,7 @@ function getFiles(req){
         loadAllTemplates: config.loadAllTemplates,
         requireUrl: requireUrl,
         ext: ext,
+        languages: languages,
         title: pjson.title,
         headline: pjson.headline,
         requireConfig: requireConfig
