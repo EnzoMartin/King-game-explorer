@@ -5,3 +5,5 @@ Small backbone application to see the various King.com games
 * Run `npm install`
 * Run `grunt packages`
 * Run `node start`
+
+![](http://i.imgur.com/SC726rT.png)
